@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<setting>
+  <autoStart>False</autoStart>
+  <dark>False</dark>
+  <primaryColor>255 225 0 </primaryColor>
+  <secondaryColor>0 255 0 </secondaryColor>
+  <showMessageBox>True</showMessageBox>
+  <alarm>False</alarm>
+  <alarmPath>
+  </alarmPath>
+  <alarmVolume>100</alarmVolume>
+  <flowDdlId>
+  </flowDdlId>
+</setting>

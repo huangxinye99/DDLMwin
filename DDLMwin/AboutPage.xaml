@@ -1,0 +1,45 @@
+﻿<Page x:Class="DDLMwin.AboutPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DDLMwin"
+      mc:Ignorable="d" 
+      d:DesignHeight="450"
+      HorizontalAlignment="Stretch"
+      Title="AboutPage">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.Row="0"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Background="Red"
+            Style="{StaticResource MaterialDesignHeadline3TextBlock}">
+            Deadline Matters
+        </TextBlock>
+
+        <TextBlock
+            Grid.Row="1"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Background="Yellow"
+            Style="{StaticResource MaterialDesignHeadline4TextBlock}">
+            开发：黄鑫烨
+        </TextBlock>
+        <TextBlock
+            Grid.Row="2"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Background="Aqua"
+            Style="{StaticResource MaterialDesignHeadline5TextBlock}">
+            基于SQLite-NET &amp; MaterialDesignInXAMLToolkit
+        </TextBlock>
+    </Grid>
+</Page>

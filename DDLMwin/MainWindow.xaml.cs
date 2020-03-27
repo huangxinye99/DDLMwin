@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace DDLMwin
 {
@@ -20,25 +9,32 @@ namespace DDLMwin
     /// </summary>
     public partial class MainWindow : Window
     {
-        readonly Uri ddlPageUri = new Uri("DdlPage.xaml", UriKind.Relative);
-        readonly Uri settingPageUri = new Uri("SettingPage.xaml", UriKind.Relative);
+        public static DdlPage dp;
+        public static SettingPage sp;
+        public static AboutPage ap;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            dp = new DdlPage();
+            sp = new SettingPage();
+            ap = new AboutPage();
+
+            this.Closing += CloseMainWindow;
         }
 
-        private void DdlsBtn_Clicked(object sender, RoutedEventArgs e)
-        {
-            mainFrame.NavigationService.Navigate(ddlPageUri);
+        private void CloseMainWindow(object sender, CancelEventArgs e) => App.mw = null;
 
-        }
+        //open deadline page
+        private void DdlsBtn_Clicked(object sender, RoutedEventArgs e) => mainFrame.Content = dp;
 
-        private void SettingBtn_Clicked(object sender, RoutedEventArgs e)
-        {
-            mainFrame.NavigationService.Navigate(settingPageUri);
-        }
+        //open setting page
+        private void SettingBtn_Clicked(object sender, RoutedEventArgs e) => mainFrame.Content = sp;
 
+        //open about page
+        private void AboutBtn_Clicked(object sender, RoutedEventArgs e) => mainFrame.Content = ap;
 
+        
     }
 }

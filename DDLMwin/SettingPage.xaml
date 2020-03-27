@@ -3,13 +3,235 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:DDLMwin"
       mc:Ignorable="d" 
+      Background="White"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SettingPage">
 
     <Grid>
-        <Label>Setting Page</Label>
+        <ScrollViewer
+            VerticalScrollBarVisibility="Hidden"
+            VerticalAlignment="Stretch">
+            <StackPanel
+                Margin="10"
+                ScrollViewer.VerticalScrollBarVisibility="Auto">
 
+                <CheckBox
+                    x:Name="AutoStartCheckBox"
+                    IsChecked="False"
+                    Margin="10">
+                    开机启动
+                </CheckBox>
+
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock
+                            Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top">
+                            主题颜色
+                        </TextBlock>
+
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label
+                                x:Name="LightLabel"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left">
+                                <Label.Style>
+                                    <Style TargetType="Label">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=IsChecked, ElementName=DarkSwitch}" Value="False">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                                <Setter Property="Content" Value="亮色"/>
+                                                <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                            
+                            <ToggleButton
+                                x:Name="DarkSwitch"
+                                Style="{StaticResource MaterialDesignSwitchToggleButton}"
+                                VerticalAlignment="Stretch"
+                                HorizontalAlignment="Center"/>
+
+                            <Label
+                                x:Name="DarkLabel"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Right">
+                                <Label.Style>
+                                    <Style TargetType="Label">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=IsChecked, ElementName=DarkSwitch}" Value="True">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                                <Setter Property="Content" Value="暗色"/>
+                                                <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+
+                            <Button
+                                x:Name="PrimaryColorBtn"
+                                Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                                Width="85"
+                                BorderBrush="{Binding Path=Background, ElementName=PrimaryColorBtn}"
+                                Grid.Column="1" 
+                                Click="PrimaryColorBtn_Click">
+                                主色调
+                            </Button>
+
+                            <Button
+                                x:Name="SecondaryColorBtn"
+                                Style="{StaticResource MaterialDesignFlatAccentBgButton}"
+                                Width="85"
+                                BorderBrush="{Binding Path=Background, ElementName=SecondaryColorBtn}"
+                                Grid.Column="2" 
+                                Click="SecondaryColorBtn_Click">
+                                副色调
+                            </Button>
+                        </Grid>
+
+                        <Label
+                            x:Name="ColorLabel"
+                            Grid.Row="2"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <StackPanel 
+                        Margin="10 0"
+                        Grid.Column="1">
+                        <Grid>
+                            <Slider
+                                x:Name="RedSlider"
+                                TickFrequency="1"
+                                Orientation="Horizontal"
+                                IsSnapToTickEnabled="True"
+                                Minimum="0"
+                                Maximum="255"
+                                Margin="0 5" ValueChanged="RedSlider_ValueChanged"/>
+                        </Grid>
+                        <Grid>
+
+                            <Slider
+                                x:Name="GreenSlider"
+                                TickFrequency="1"
+                                Orientation="Horizontal"
+                                IsSnapToTickEnabled="True"
+                                Minimum="0"
+                                Maximum="255"
+                                Margin="0 5" ValueChanged="GreenSlider_ValueChanged"/>
+                        </Grid>
+                        <Grid>
+
+                            <Slider
+                                x:Name="BlueSlider"
+                                TickFrequency="1"
+                                Orientation="Horizontal"
+                                IsSnapToTickEnabled="True"
+                                Minimum="0"
+                                Maximum="255"
+                                Margin="0 5" ValueChanged="BlueSlider_ValueChanged"/>
+                        </Grid>
+                    </StackPanel>
+
+                </Grid>
+
+                <CheckBox
+                    x:Name="MessageCheckBox"
+                    IsChecked="True"
+                    Margin="10">
+                    倒计时结束时弹出消息框
+                </CheckBox>
+                <CheckBox
+                    x:Name="AlarmCheckBox"
+                    IsChecked="False"
+                    Margin="10">
+                    倒计时结束时播放闹铃
+                </CheckBox>
+
+                <Grid Margin="7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="60"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox
+                        x:Name="AlarmPathTextBox"
+                        materialDesign:HintAssist.Hint="闹铃路径"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        IsEnabled="{Binding Path=IsChecked, ElementName=AlarmCheckBox}"
+                        VerticalAlignment="Center"
+                        Grid.Column="0"/>
+                    <Button
+                        x:Name="alarmPathLocateBtn"
+                        Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                        ToolTip="定位闹铃路径"
+                        IsEnabled="{Binding Path=IsChecked, ElementName=AlarmCheckBox}"
+                        Grid.Column="1" Click="AlarmPathLocateBtn_Click">
+                        <materialDesign:PackIcon
+                            Kind="Location"
+                            Height="24"
+                            Width="24" />
+                    </Button>
+                </Grid>
+
+                <Slider
+                    x:Name="AlarmVolumeSlider"
+                    Minimum="0"
+                    Maximum="100"
+                    Style="{StaticResource MaterialDesignDiscreteSlider}"
+                    IsEnabled="{Binding Path=IsChecked, ElementName=AlarmCheckBox}"
+                    Value="49"
+                    IsSnapToTickEnabled="True"/>
+                <Label
+                    x:Name="alarmVolumeLabel"
+                    HorizontalAlignment="Center"
+                    materialDesign:HintAssist.Hint="音频音量"
+                    IsEnabled="{Binding Path=IsChecked, ElementName=AlarmCheckBox}"
+                    Content="{Binding Path=Value, ElementName=AlarmVolumeSlider}"/>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Button
+            x:Name="YesBtn"           
+            Margin="20"
+            Style="{StaticResource MaterialDesignFloatingActionAccentButton}"            
+            ToolTip="保存"           
+            HorizontalAlignment="Right"     
+            VerticalAlignment="Bottom"            
+            Click="YesBtn_Click">
+            <materialDesign:PackIcon           
+                Kind="Check"              
+                Height="24"              
+                Width="24"/>
+        </Button>
+
+        <materialDesign:Snackbar
+            x:Name="Snackbar"
+            MessageQueue="{materialDesign:MessageQueue}"/>
     </Grid>
 </Page>

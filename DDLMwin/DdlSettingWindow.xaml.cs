@@ -1,83 +1,61 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using MaterialDesignThemes.Wpf;
-using MaterialDesignThemes.Wpf.Converters;
 
 namespace DDLMwin
 {
     /// <summary>
     /// DdlSettingWindow.xaml 的交互逻辑
     /// </summary>
+    
+    //DdlSettingWindow sets the information of a deadline
     public partial class DdlSettingWindow : Window
     {
-
         public string ddlName = "New Deadline";
-        public DateTime time;
-        public TextBox ddlNameTextBox;
-        public DatePicker datePicker;
-        public TimePicker timePicker;
+        public DateTime ddlTime;
         public int id = 0;
-
-        public DdlSettingWindow(int id)
-        {
-            InitializeDdlSettingWindow();
-            this.id = id;
-        }
 
         public DdlSettingWindow()
         {
+            ddlTime = DateTime.Now.AddHours(1);
+            InitializeDdlSettingWindow();
+        }
+
+        public DdlSettingWindow(int id)
+        {
+            this.id = id;
+            Ddl ddl = DdlOperation.ddls.Find(d => d.Id == id);
+            ddlName = ddl.Name;
+            ddlTime = ddl.Time;
+            InitializeDdlSettingWindow();
+        }
+
+        public DdlSettingWindow(int id, String ddlName, DateTime ddlTime)
+        {
+            this.ddlName = ddlName;
+            this.ddlTime = ddlTime;
+            this.id = id;
             InitializeDdlSettingWindow();
         }
 
         private void InitializeDdlSettingWindow()
         {
             InitializeComponent();
-            ddlNameTextBox = this.FindName("DdlNameTextBox") as TextBox;
-            datePicker = this.FindName("DatePicker") as DatePicker;
-            timePicker = this.FindName("TimePicker") as TimePicker;
 
-            if(id == 0)
-            {
-                time = DateTime.Now.AddHours(1);
-                ddlNameTextBox.Text = ddlName;
-                datePicker.SelectedDate = time.Date;
-                timePicker.SelectedTime = time;
-            }
-            else
-            {
-                //get data from database using id
-                GetDdl(id);
-                time = DateTime.Now.AddHours(1);
-                ddlNameTextBox.Text = ddlName;
-                datePicker.SelectedDate = time.Date;
-                timePicker.SelectedTime = time;
-            }
-
+            DdlNameTextBox.Text = ddlName;
+            DatePicker.SelectedDate = ddlTime.Date;
+            TimePicker.SelectedTime = ddlTime;
         }
 
-        private void DragWindow(object sender, MouseButtonEventArgs e)
-        {
-            this.DragMove();
-        }
+        private void DragWindow(object sender, MouseButtonEventArgs e) => this.DragMove();
 
-        public void CloseWindow(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+        public void CloseWindow(object sender, RoutedEventArgs e) => this.Close();
 
         private void NoBtn_Click(object sender, RoutedEventArgs e)
         {
+            this.DialogResult = false;
             CloseWindow(sender, e);
         }
 
@@ -92,11 +70,17 @@ namespace DDLMwin
             //put the data into the database
             if (CheckNull())
             {
+                ddlName = DdlNameTextBox.Text;
                 DateTime ddlTime = CalcDdlTime();
                 if (CheckTime(ddlTime))
                 {
-                    SaveDdl(ddlName, ddlTime);
-                    MessageBox.Show("Deadline已设置");
+                    if (id == 0)
+                        SaveDdl(ddlName, ddlTime);
+                    else
+                        SaveDdl(id, ddlName, ddlTime);
+
+                    MessageBox.Show("Deadline已设置 \n名称：" + ddlName + "\n时间：" + ddlTime);
+                    this.DialogResult = true;
                     CloseWindow(sender, e);
                 }
                 else
@@ -104,34 +88,27 @@ namespace DDLMwin
             }
         }
 
+        //check if the textbox is null
         private Boolean CheckNull()
         {
-            if (ddlNameTextBox.Text.Length == 0)
+            if (DdlNameTextBox.Text.Length == 0)
             {
                 MessageBox.Show("Deadline名称不能为空！");
                 return false;
             }
-            /*if (datePicker.SelectedDate == null)
-            {
-                MessageBox.Show("日期不能为空！");
-                return false;
-            }
-            if (timePicker.SelectedTime == null)
-            {
-                MessageBox.Show("时间不能为空！");
-                return false;
-            }*/
             return true;
         }
 
+        //get DateTime from two pickers
         private DateTime CalcDdlTime()
         {
-            DateTime ddlTime = (DateTime)timePicker.SelectedTime;
-            TimeSpan ts = (TimeSpan)(datePicker.SelectedDate - DateTime.Now.Date);
+            DateTime ddlTime = (DateTime)TimePicker.SelectedTime;
+            TimeSpan ts = (TimeSpan)(DatePicker.SelectedDate - ddlTime.Date);
             ddlTime = ddlTime.AddDays(ts.Days);
             return ddlTime;
         }
 
+        //check if deadline time is ahead of now
         private Boolean CheckTime(DateTime ddlTime)
         {
             DateTime now = DateTime.Now;
@@ -141,13 +118,18 @@ namespace DDLMwin
             return false;
         }
 
-        private void GetDdl(int id)
-        {
-
-        }
-
+        //add new deadline
         private void SaveDdl(string ddlName, DateTime ddlTime)
         {
+            DbOperation.Insert(ddlName, ddlTime);
+            DdlOperation.RefreshDdls();
+        }
+
+        //update the deadline
+        private void SaveDdl(int id, String ddlName, DateTime ddlTime)
+        {
+            DbOperation.Update(id, ddlName, ddlTime);
+            DdlOperation.RefreshDdls();
 
         }
 
