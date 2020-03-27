@@ -20,7 +20,8 @@ Windows没找到合适的Deadline倒计时软件，就自己瞎搞一个
 [MaterialDesignInXamlToolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit "WPF的Material Design库")
 
 ## 使用
-直接点击文件夹的exe文件即可  
+在[release页面](https://github.com/huangxinye99/DDLMwin/releases)直接下载zip压缩包  
+解压后直接双击文件夹的exe文件即可  
 
   在主页点击Deadline对其进行设置  
   浮窗按钮创建此Deadline浮窗  
