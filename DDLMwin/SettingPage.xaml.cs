@@ -38,8 +38,6 @@ namespace DDLMwin
             AlarmPathTextBox.Text = SettingOperation.alarmPath;
             AlarmVolumeSlider.Value = SettingOperation.alarmVolume;
             ColorLabel.Content = SettingOperation.primaryColor;
-
-            DdlOperation.dt.Tick -= new EventHandler(DdlOperation.RefreshDdlPageEvent);
         }
 
         private void PrimaryColorBtn_Click(object sender, RoutedEventArgs e)

@@ -75,7 +75,7 @@ namespace DDLMwin
                 s = s + ddl.id + " ";
             xn.SelectSingleNode("flowDdlId").InnerText = s;
 
-            xd.Save(@"../../../Setting.xml");
+            xd.Save("Setting.xml");
             SetTheme();
         }
 

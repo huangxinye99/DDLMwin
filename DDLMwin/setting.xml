@@ -1,14 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <setting>
-  <autoStart>False</autoStart>
-  <dark>False</dark>
-  <primaryColor>255 225 0 </primaryColor>
+  <autoStart>True</autoStart>
+  <dark>True</dark>
+  <primaryColor>255 222 0 </primaryColor>
   <secondaryColor>0 255 0 </secondaryColor>
   <showMessageBox>True</showMessageBox>
-  <alarm>False</alarm>
-  <alarmPath>
-  </alarmPath>
-  <alarmVolume>100</alarmVolume>
+  <alarm>True</alarm>
+  <alarmPath>C:\Users\Fourn\Desktop\DDLMwin\DDLMwin\DDLMwin\sound.mp3</alarmPath>
+  <alarmVolume>50</alarmVolume>
   <flowDdlId>
   </flowDdlId>
 </setting>

@@ -22,6 +22,7 @@ namespace DDLMwin
             ap = new AboutPage();
 
             this.Closing += CloseMainWindow;
+            this.Closing += StopRefreshDdlPage;
         }
 
         private void CloseMainWindow(object sender, CancelEventArgs e) => App.mw = null;
@@ -35,6 +36,6 @@ namespace DDLMwin
         //open about page
         private void AboutBtn_Clicked(object sender, RoutedEventArgs e) => mainFrame.Content = ap;
 
-        
+        private void StopRefreshDdlPage(object sender, EventArgs e) => DdlOperation.dt.Tick -= new EventHandler(DdlOperation.RefreshDdlPageEvent);
     }
 }
