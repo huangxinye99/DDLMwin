@@ -9,7 +9,6 @@ namespace DDLMwin
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static DdlPage dp;
         public static SettingPage sp;
         public static AboutPage ap;
 
@@ -17,7 +16,6 @@ namespace DDLMwin
         {
             InitializeComponent();
 
-            dp = new DdlPage();
             sp = new SettingPage();
             ap = new AboutPage();
 
@@ -28,7 +26,7 @@ namespace DDLMwin
         private void CloseMainWindow(object sender, CancelEventArgs e) => App.mw = null;
 
         //open deadline page
-        private void DdlsBtn_Clicked(object sender, RoutedEventArgs e) => mainFrame.Content = dp;
+        private void DdlsBtn_Clicked(object sender, RoutedEventArgs e) => mainFrame.Content = new DdlPage();
 
         //open setting page
         private void SettingBtn_Clicked(object sender, RoutedEventArgs e) => mainFrame.Content = sp;

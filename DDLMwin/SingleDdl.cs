@@ -78,10 +78,19 @@ namespace DDLMwin
             cw.ShowDialog();
             if (cw.DialogResult == true)
             {
+                //close the flow window if exists
+                DdlFlowWindow dfw = DdlOperation.flowWindows.Find(d => d.id == id);
+                if (dfw != null)
+                {
+                    dfw.Close();
+                    DdlOperation.flowWindows.Remove(dfw);
+                }
+
                 DbOperation.Delete(id);
                 DdlOperation.RefreshDdls();
                 DdlPage.self.RefreshDdlStackPanel();
                 DdlPage.self.ShowSnackbar();
+
             }
 
         }
