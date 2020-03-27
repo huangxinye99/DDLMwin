@@ -7,13 +7,15 @@ Deadline Matters for Windows
 [使用](#使用)  
 [截图](#截图)  
 [性能](#性能)  
+[其他](#其他)  
 
 ## 更新
 v1.0(2020-3-27)  
 基本能用
 
 ## 开发背景
-Windows没找到合适的Deadline倒计时软件，就自己瞎搞一个
+Windows没找到合适的Deadline倒计时软件，就自己瞎搞一个  
+删除了安卓版（最后有提）的登录和分类功能  
 软件开发基于[sqlite-net](https://github.com/praeclarum/sqlite-net "SQLite数据库管理")和
 [MaterialDesignInXamlToolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit "WPF的Material Design库")
 
@@ -42,3 +44,6 @@ Deadline浮窗
 DDLm for Windows使用C#开发  
 这是我第一款开发的WPF软件，会比其他的小应用吃内存  
 但是50M在我个人接受范围内所以**以后也不会优化**  
+
+## 其他
+其实还有一个和同学开发的DDLM for Android，但是项目隐藏了，这里就不贴URL了。
