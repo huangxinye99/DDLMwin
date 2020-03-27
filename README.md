@@ -5,8 +5,8 @@ Deadline Matters for Windows
 [更新](#更新)  
 [开发背景](#开发背景)  
 [使用](#使用)  
+[截图](#截图)  
 [性能](#性能)  
-
 
 ## 更新
 v1.0(2020-3-27)  
@@ -30,6 +30,13 @@ Deadline浮窗鼠标左键移动，右键设置Deadline，滚轮调整大小，�
 设置页面可以设置DDLM的开机自启（需管理员身份）、主题颜色和提醒方式 
 
 以上说的功能都没有快捷键，**以后也不一定有**
+
+## 截图
+DDLM主程序  
+![DDLM主程序](./preview/1.png "DDLM主程序")
+
+Deadline浮窗  
+![Deadline浮窗](./preview/2.png "Deadline浮窗")
 
 ## 性能
 DDLm for Windows使用C#开发  
