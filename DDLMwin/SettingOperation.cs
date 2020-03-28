@@ -1,6 +1,7 @@
 ﻿using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
 using System;
+using System.Configuration;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media;
@@ -12,8 +13,7 @@ namespace DDLMwin
 
     class SettingOperation
     {
-        public static XmlDocument xd = new XmlDocument();
-        public static XmlNode xn;
+        private static Configuration config;
 
         public static bool autoStart;
         public static bool isDark;
@@ -26,25 +26,24 @@ namespace DDLMwin
 
         public SettingOperation()
         {
+            config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             ReadSetting();
         }
 
         //get setting from setting.xml
         public static void ReadSetting()
         {
-            xd.Load("Setting.xml");
-            xn = xd.SelectSingleNode("setting");
+            autoStart = Boolean.Parse(ConfigurationManager.AppSettings["autoStart"]);
+            isDark = Boolean.Parse(ConfigurationManager.AppSettings["dark"]);
+            primaryColor = ConfigurationManager.AppSettings["primaryColor"];
+            secondaryColor = ConfigurationManager.AppSettings["secondaryColor"];
+            showMessageBox = Boolean.Parse(ConfigurationManager.AppSettings["showMessageBox"]);
+            alarm = Boolean.Parse(ConfigurationManager.AppSettings["alarm"]);
+            alarmPath = ConfigurationManager.AppSettings["alarmPath"];
+            alarmVolume = int.Parse(ConfigurationManager.AppSettings["alarmVolume"]);
 
-            autoStart = Boolean.Parse(xn.SelectSingleNode("autoStart").InnerText);
-            isDark = Boolean.Parse(xn.SelectSingleNode("dark").InnerText);
-            primaryColor = xn.SelectSingleNode("primaryColor").InnerText;
-            secondaryColor = xn.SelectSingleNode("secondaryColor").InnerText;
-            showMessageBox = Boolean.Parse(xn.SelectSingleNode("showMessageBox").InnerText);
-            alarm = Boolean.Parse(xn.SelectSingleNode("alarm").InnerText);
-            alarmPath = xn.SelectSingleNode("alarmPath").InnerText;
-            alarmVolume = int.Parse(xn.SelectSingleNode("alarmVolume").InnerText);
 
-            String[] flowDdlIdString = xn.SelectSingleNode("flowDdlId").InnerText.Split(' ');
+            String[] flowDdlIdString = ConfigurationManager.AppSettings["flowDdlId"].Split(' ');
             for (int i = 0; i < flowDdlIdString.Length - 1; i++)
                 try
                 {
@@ -58,24 +57,24 @@ namespace DDLMwin
         //save setting
         internal static void SaveSetting()
         {
-            if (autoStart.ToString() != xn.SelectSingleNode("autoStart").InnerText)
+            if (autoStart.ToString() != ConfigurationManager.AppSettings["autoStart"])
                 SetAutoStart();
 
-            xn.SelectSingleNode("autoStart").InnerText = autoStart.ToString();
-            xn.SelectSingleNode("dark").InnerText = isDark.ToString();
-            xn.SelectSingleNode("primaryColor").InnerText = primaryColor;
-            xn.SelectSingleNode("secondaryColor").InnerText = secondaryColor;
-            xn.SelectSingleNode("showMessageBox").InnerText = showMessageBox.ToString();
-            xn.SelectSingleNode("alarm").InnerText = alarm.ToString();
-            xn.SelectSingleNode("alarmPath").InnerText = alarmPath;
-            xn.SelectSingleNode("alarmVolume").InnerText = alarmVolume.ToString();
+            config.AppSettings.Settings["autoStart"].Value = autoStart.ToString();
+            config.AppSettings.Settings["dark"].Value = isDark.ToString();
+            config.AppSettings.Settings["primaryColor"].Value = primaryColor;
+            config.AppSettings.Settings["secondaryColor"].Value = secondaryColor;
+            config.AppSettings.Settings["showMessageBox"].Value = showMessageBox.ToString();
+            config.AppSettings.Settings["alarm"].Value = alarm.ToString();
+            config.AppSettings.Settings["alarmPath"].Value = alarmPath;
+            config.AppSettings.Settings["alarmVolume"].Value = alarmVolume.ToString();
 
             String s = "";
             foreach (var ddl in DdlOperation.flowWindows)
                 s = s + ddl.id + " ";
-            xn.SelectSingleNode("flowDdlId").InnerText = s;
+            config.AppSettings.Settings["flowDdlId"].Value = s;
 
-            xd.Save("Setting.xml");
+            config.Save();
             SetTheme();
         }
 

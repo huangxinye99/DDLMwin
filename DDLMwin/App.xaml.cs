@@ -11,9 +11,12 @@ namespace DDLMwin
     {
         private static swf.NotifyIcon ni;
         public static MainWindow mw;
+        public static string path;
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            path = AppDomain.CurrentDomain.BaseDirectory;
+
             _ = new DbOperation();
             _ = new DdlOperation();
             _ = new SettingOperation();
@@ -21,7 +24,7 @@ namespace DDLMwin
             RemoveIcon();
             AddIcon();
 
-            DdlOperation.ShowAllFlowWindowEvent(sender, e); 
+            DdlOperation.ShowAllFlowWindowEvent(sender, e);
         }
 
         private void Application_Exit(object sender, ExitEventArgs e)
@@ -35,11 +38,9 @@ namespace DDLMwin
         {
             if (ni != null)
                 return;
-            ni = new swf.NotifyIcon
-            {
-                Text = "Deadline Matters",
-                Icon = new System.Drawing.Icon("logo.ico")
-            };
+            ni = new swf.NotifyIcon();
+            ni.Text = "Deadline Matters";
+            ni.Icon = new System.Drawing.Icon(path + "Logo.ico");
             ni.Visible = true;
             ni.MouseDoubleClick += new swf.MouseEventHandler(OpenDdlPage);
 
@@ -88,7 +89,6 @@ namespace DDLMwin
             menu.MenuItems.Add(hideFlowWindowItem);
             menu.MenuItems.Add(settingItem);
             menu.MenuItems.Add(closeItem);
-
             ni.ContextMenu = menu;
         }
 

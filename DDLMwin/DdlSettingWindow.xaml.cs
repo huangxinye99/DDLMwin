@@ -78,7 +78,7 @@ namespace DDLMwin
                         SaveDdl(ddlName, ddlTime);
                     else
                         SaveDdl(id, ddlName, ddlTime);
-
+                    
                     MessageBox.Show("Deadline已设置 \n名称：" + ddlName + "\n时间：" + ddlTime);
                     this.DialogResult = true;
                     CloseWindow(sender, e);
@@ -86,16 +86,17 @@ namespace DDLMwin
                 else
                     MessageBox.Show("Deadline早于当前时间！");
             }
+            else
+            {
+                MessageBox.Show("Deadline名称不能为空！");
+            }
         }
 
         //check if the textbox is null
         private Boolean CheckNull()
         {
             if (DdlNameTextBox.Text.Length == 0)
-            {
-                MessageBox.Show("Deadline名称不能为空！");
                 return false;
-            }
             return true;
         }
 
@@ -122,6 +123,7 @@ namespace DDLMwin
         private void SaveDdl(string ddlName, DateTime ddlTime)
         {
             DbOperation.Insert(ddlName, ddlTime);
+            
             DdlOperation.RefreshDdls();
         }
 

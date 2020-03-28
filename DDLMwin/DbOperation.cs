@@ -8,15 +8,16 @@ namespace DDLMwin
 
     class DbOperation
     {
-        public static String dbName = "Ddlm.db";
-        private static SQLiteConnection sqc;
+        public static String dbPath;
+        public static SQLiteConnection sqc;
 
         public String tableName = "Ddl";
         public String[] elements = { "Name", "Time", "Id" };
 
         public DbOperation()
         {
-            sqc = new SQLiteConnection(dbName);
+            dbPath = App.path + "Ddlm.db";
+            sqc = new SQLiteConnection(dbPath);
             sqc.CreateTable<Ddl>();
         }
 
