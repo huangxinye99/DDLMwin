@@ -30,6 +30,7 @@ namespace DDLMwin
         private void Application_Exit(object sender, ExitEventArgs e)
         {
             RemoveIcon();
+            DdlOperation.SaveFlowWindowPos();
             SettingOperation.SaveSetting();
             this.Shutdown();
         }

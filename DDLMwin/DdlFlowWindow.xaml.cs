@@ -7,43 +7,33 @@ namespace DDLMwin
     /// <summary>
     /// DdlFlowWindow.xaml 的交互逻辑
     /// </summary>
-    
+
     //DdlFlowWindow creates a float window shows the name and left time of a deadline
     public partial class DdlFlowWindow : Window
     {
         public static DdlFlowWindow self;
         public readonly int id;
         private double _size;
-        private double Size
+        public double Size
         {
             get => _size;
             set => _size = (value < 0.1) ? 0.1 : value;
         }
 
-        public DdlFlowWindow(int id)
+        public DdlFlowWindow(int id, string name, string leftTime, double size)
         {
             this.id = id;
             self = this;
-            Size = 1;
-
-            InitializeComponent();
-            DdlNameTextBlock.Text = DdlOperation.ddls.Find(d => d.Id == id).Name;
-            LeftTimeTextBlock.Text = DdlOperation.GetLeftTime(id);
-        }
-
-        public DdlFlowWindow(int id, string name, String leftTime)
-        {
-            this.id = id;
-            self = this;
-            
-            Size = 1;
+            Size = size;
 
             InitializeComponent();
             DdlNameTextBlock.Text = name;
             LeftTimeTextBlock.Text = leftTime;
+            DdlNameTextBlock.FontSize = 50 * Size;
+            LeftTimeTextBlock.FontSize = 50 * Size;
         }
 
-        private void DragWindow(object sender, EventArgs e) => this.DragMove();
+    private void DragWindow(object sender, EventArgs e) => this.DragMove();
 
         //change the size of FLowWindow
         private void FlowWindow_MouseWheel(object sender, MouseWheelEventArgs e)
@@ -57,6 +47,7 @@ namespace DDLMwin
         private void FlowWindow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             DdlOperation.flowWindows.Remove(this);
+            DdlOperation.flowWindowsSetting.Remove(id);
             Close();
         }
 

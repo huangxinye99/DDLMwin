@@ -15,6 +15,7 @@ namespace DDLMwin
         //public readonly static List<TimeSpan> leftTimes;
         static MediaPlayer player;
         public static List<DdlFlowWindow> flowWindows = new List<DdlFlowWindow>();
+        public static Dictionary<int, double[]> flowWindowsSetting = new Dictionary<int, double[]>();
         public static readonly DispatcherTimer dt = new DispatcherTimer();
 
         public DdlOperation()
@@ -104,7 +105,13 @@ namespace DDLMwin
         public static void ShowAllFlowWindowEvent(object sender, EventArgs e)
         {
             foreach (DdlFlowWindow dfw in flowWindows)
+            {
+                double[] d = flowWindowsSetting[dfw.id];
                 dfw.Show();
+                dfw.Left = d[0];
+                dfw.Top = d[1];
+                dfw.Size = d[2];
+            }
         }
 
         //hide all flow deadlines
@@ -114,5 +121,11 @@ namespace DDLMwin
                 dfw.Hide();
         }
 
+        //save the position of flow windows
+        public static void SaveFlowWindowPos()
+        {
+            foreach (DdlFlowWindow dfw in flowWindows)
+                flowWindowsSetting[dfw.id] = new double[3]{dfw.Left, dfw.Top, dfw.Size};
+        }
     }
 }

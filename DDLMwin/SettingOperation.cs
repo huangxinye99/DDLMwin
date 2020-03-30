@@ -42,15 +42,24 @@ namespace DDLMwin
             alarmPath = ConfigurationManager.AppSettings["alarmPath"];
             alarmVolume = int.Parse(ConfigurationManager.AppSettings["alarmVolume"]);
 
+            XmlDocument xml = new XmlDocument();
+            xml.Load(App.path+"FlowWindowSetting.xml");
+            XmlNodeList xnl = xml.SelectSingleNode("root").ChildNodes;
+            foreach (XmlNode xn in xnl)
+            {
+                XmlElement xe = (XmlElement)xn;
+                int id = int.Parse(xe.GetAttribute("id"));
+                XmlNodeList xeXnl = xe.ChildNodes;
+                double x = double.Parse(xeXnl.Item(0).InnerText);
+                double y = double.Parse(xeXnl.Item(1).InnerText);
+                double size = double.Parse(xeXnl.Item(2).InnerText);
+                double[] d = {x, y, size};
+                DdlOperation.flowWindowsSetting.Add(id, d);
 
-            String[] flowDdlIdString = ConfigurationManager.AppSettings["flowDdlId"].Split(' ');
-            for (int i = 0; i < flowDdlIdString.Length - 1; i++)
-                try
-                {
-                    DdlOperation.flowWindows.Add(new DdlFlowWindow(int.Parse(flowDdlIdString[i])));
-                }
-                catch { }
-
+                DdlFlowWindow dfw = new DdlFlowWindow(id, DdlOperation.ddls.Find(ddl => ddl.Id == id).Name, DdlOperation.GetLeftTime(id), size);
+                DdlOperation.flowWindows.Add(dfw);
+            }
+            
             SetTheme();
         }
 
@@ -69,11 +78,32 @@ namespace DDLMwin
             config.AppSettings.Settings["alarmPath"].Value = alarmPath;
             config.AppSettings.Settings["alarmVolume"].Value = alarmVolume.ToString();
 
-            String s = "";
-            foreach (var ddl in DdlOperation.flowWindows)
-                s = s + ddl.id + " ";
-            config.AppSettings.Settings["flowDdlId"].Value = s;
+            XmlDocument xml = new XmlDocument();
+            xml.Load(App.path + "FlowWindowSetting.xml");
+            XmlNode root = xml.SelectSingleNode("root");
+            root.RemoveAll();
 
+            foreach (var kvp in DdlOperation.flowWindowsSetting)
+            {
+                XmlElement flowWindow = xml.CreateElement("flowWindow");
+                XmlAttribute id = xml.CreateAttribute("id");
+                id.InnerText = kvp.Key.ToString();
+                flowWindow.SetAttribute("id", kvp.Key.ToString());
+
+                XmlElement posX = xml.CreateElement("posX");
+                posX.InnerText = kvp.Value[0].ToString();
+                XmlElement posY = xml.CreateElement("posY");
+                posY.InnerText = kvp.Value[1].ToString();
+                XmlElement size = xml.CreateElement("size");
+                size.InnerText = kvp.Value[2].ToString();
+
+                flowWindow.AppendChild(posX);
+                flowWindow.AppendChild(posY);
+                flowWindow.AppendChild(size);
+                root.AppendChild(flowWindow);
+            }
+
+            xml.Save(App.path+ "FlowWindowSetting.xml");
             config.Save();
             SetTheme();
         }

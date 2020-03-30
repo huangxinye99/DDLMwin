@@ -66,9 +66,21 @@ namespace DDLMwin
         //create a flow window
         private void FlowDdlBtn_Click(object sender, RoutedEventArgs e)
         {
-            DdlFlowWindow dfw = new DdlFlowWindow(id, ddlName, leftTime);
-            DdlOperation.flowWindows.Add(dfw);
-            dfw.Show();
+            if (DdlOperation.flowWindows.Exists(d => d.id == id))
+            {
+                MessageBox.Show("浮窗已创建");
+            }
+            else
+            {
+                DdlFlowWindow dfw = new DdlFlowWindow(id, ddlName, leftTime, 1);
+                double[] d = {0, 0, 1 };
+                DdlOperation.flowWindowsSetting.Add(id, d);
+                dfw.Left = 0;
+                dfw.Top = 0;
+                dfw.Size = 1;
+                DdlOperation.flowWindows.Add(dfw);
+                dfw.Show();
+            }
         }
 
         //delete this deadline
@@ -84,6 +96,7 @@ namespace DDLMwin
                 {
                     dfw.Close();
                     DdlOperation.flowWindows.Remove(dfw);
+                    DdlOperation.flowWindowsSetting.Remove(id);
                 }
 
                 DbOperation.Delete(id);

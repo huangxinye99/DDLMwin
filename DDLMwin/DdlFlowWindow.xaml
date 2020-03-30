@@ -12,7 +12,7 @@
         AllowsTransparency="True"
         Background="Transparent"
         WindowStyle="None"
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="Manual"
         Topmost="True"
         ShowInTaskbar="False"
         MouseLeftButtonDown="DragWindow"
