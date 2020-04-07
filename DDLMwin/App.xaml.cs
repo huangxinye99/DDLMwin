@@ -27,7 +27,11 @@ namespace DDLMwin
             DdlOperation.ShowAllFlowWindowEvent(sender, e);
         }
 
-        private void Application_Exit(object sender, ExitEventArgs e)
+        private void Application_Exit(object sender, ExitEventArgs e) => CloseDdlm();
+
+        private void Application_SessionEnding(object sender, SessionEndingCancelEventArgs e) => CloseDdlm();
+
+        private void CloseDdlm()
         {
             RemoveIcon();
             DdlOperation.SaveFlowWindowPos();
@@ -119,5 +123,7 @@ namespace DDLMwin
             mw.SettingBtn.IsChecked = true;
             mw.mainFrame.Content = new SettingPage();
         }
+
+        
     }
 }

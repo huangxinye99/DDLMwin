@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:DDLMwin"
              Startup="Application_Startup"
              Exit="Application_Exit"
+             SessionEnding="Application_SessionEnding"
              ShutdownMode="OnExplicitShutdown">
     <Application.Resources>
         <ResourceDictionary>

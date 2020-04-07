@@ -80,6 +80,11 @@ namespace DDLMwin
                         SaveDdl(id, ddlName, ddlTime);
                     
                     MessageBox.Show("Deadline已设置 \n名称：" + ddlName + "\n时间：" + ddlTime);
+
+                    DdlFlowWindow dfw = DdlOperation.flowWindows.Find(fw => fw.id == id);
+                    if (dfw != null)
+                        dfw.DdlNameTextBlock.Text = ddlName;
+
                     this.DialogResult = true;
                     CloseWindow(sender, e);
                 }
