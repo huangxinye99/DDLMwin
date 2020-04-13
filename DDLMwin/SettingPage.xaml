@@ -160,6 +160,13 @@
                 </Grid>
 
                 <CheckBox
+                    x:Name="AutoShowCheckBox"
+                    IsChecked="False"
+                    Margin="10">
+                    自动显示最近的一条Deadline
+                </CheckBox>
+                
+                <CheckBox
                     x:Name="MessageCheckBox"
                     IsChecked="True"
                     Margin="10">

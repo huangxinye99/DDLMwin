@@ -33,6 +33,7 @@ namespace DDLMwin
             PrimaryColorBtn.Background = new SolidColorBrush(Color.FromRgb(primaryColor[0], primaryColor[1], primaryColor[2]));
             SecondaryColorBtn.Background = new SolidColorBrush(Color.FromRgb(secondaryColor[0], secondaryColor[1], secondaryColor[2]));
             SetSliderAndLabel();
+            AutoShowCheckBox.IsChecked = SettingOperation.autoShow;
             MessageCheckBox.IsChecked = SettingOperation.showMessageBox;
             AlarmCheckBox.IsChecked = SettingOperation.alarm;
             AlarmPathTextBox.Text = SettingOperation.alarmPath;
@@ -91,6 +92,7 @@ namespace DDLMwin
             SettingOperation.isDark = (bool)DarkSwitch.IsChecked;
             SettingOperation.primaryColor = GetStringFromColor(primaryColor);
             SettingOperation.secondaryColor = GetStringFromColor(secondaryColor);
+            SettingOperation.autoShow = (bool)AutoShowCheckBox.IsChecked;
             SettingOperation.showMessageBox = (bool)MessageCheckBox.IsChecked;
             SettingOperation.alarm = (bool)AlarmCheckBox.IsChecked;
             SettingOperation.alarmPath = AlarmPathTextBox.Text;

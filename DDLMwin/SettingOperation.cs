@@ -19,8 +19,9 @@ namespace DDLMwin
         public static bool isDark;
         public static string primaryColor;
         public static string secondaryColor;
-        public static Boolean showMessageBox;
-        public static Boolean alarm;
+        public static bool autoShow;
+        public static bool showMessageBox;
+        public static bool alarm;
         public static string alarmPath;
         public static int alarmVolume;
 
@@ -37,6 +38,7 @@ namespace DDLMwin
             isDark = Boolean.Parse(ConfigurationManager.AppSettings["dark"]);
             primaryColor = ConfigurationManager.AppSettings["primaryColor"];
             secondaryColor = ConfigurationManager.AppSettings["secondaryColor"];
+            autoShow = Boolean.Parse(ConfigurationManager.AppSettings["autoShow"]);
             showMessageBox = Boolean.Parse(ConfigurationManager.AppSettings["showMessageBox"]);
             alarm = Boolean.Parse(ConfigurationManager.AppSettings["alarm"]);
             alarmPath = ConfigurationManager.AppSettings["alarmPath"];
@@ -73,6 +75,7 @@ namespace DDLMwin
             config.AppSettings.Settings["dark"].Value = isDark.ToString();
             config.AppSettings.Settings["primaryColor"].Value = primaryColor;
             config.AppSettings.Settings["secondaryColor"].Value = secondaryColor;
+            config.AppSettings.Settings["autoShow"].Value = autoShow.ToString(); ;
             config.AppSettings.Settings["showMessageBox"].Value = showMessageBox.ToString();
             config.AppSettings.Settings["alarm"].Value = alarm.ToString();
             config.AppSettings.Settings["alarmPath"].Value = alarmPath;

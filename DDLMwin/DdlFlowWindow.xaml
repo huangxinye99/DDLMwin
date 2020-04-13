@@ -13,6 +13,7 @@
         Background="Transparent"
         WindowStyle="None"
         WindowStartupLocation="Manual"
+        ResizeMode="NoResize"
         Topmost="True"
         ShowInTaskbar="False"
         MouseLeftButtonDown="DragWindow"
@@ -31,11 +32,6 @@
                 x:Name="DdlNameTextBlock"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Left">
-                <TextBlock.Style>
-                    <Style>
-                        <Setter Property="TextElement.FontSize" Value="50"/>
-                    </Style>
-                </TextBlock.Style>
             </TextBlock>
 
             <TextBlock
@@ -45,11 +41,6 @@
                 x:Name="LeftTimeTextBlock"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Right">
-                <TextBlock.Style>
-                    <Style>
-                        <Setter Property="TextElement.FontSize" Value="50"/>
-                    </Style>
-                </TextBlock.Style>
             </TextBlock>
         </StackPanel>
 

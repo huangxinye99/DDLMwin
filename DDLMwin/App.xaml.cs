@@ -25,6 +25,8 @@ namespace DDLMwin
             AddIcon();
 
             DdlOperation.ShowAllFlowWindowEvent(sender, e);
+            if (SettingOperation.autoShow)
+                DdlOperation.ShowNearestFlowWindow();
         }
 
         private void Application_Exit(object sender, ExitEventArgs e) => CloseDdlm();

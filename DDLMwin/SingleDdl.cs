@@ -77,7 +77,6 @@ namespace DDLMwin
                 DdlOperation.flowWindowsSetting.Add(id, d);
                 dfw.Left = 0;
                 dfw.Top = 0;
-                dfw.Size = 1;
                 DdlOperation.flowWindows.Add(dfw);
                 dfw.Show();
             }

@@ -127,5 +127,27 @@ namespace DDLMwin
             foreach (DdlFlowWindow dfw in flowWindows)
                 flowWindowsSetting[dfw.id] = new double[3]{dfw.Left, dfw.Top, dfw.Size};
         }
+
+        //show the flow window of nearest deadline
+        public static void ShowNearestFlowWindow()
+        {
+            int id = 0;
+            foreach (var leftTime in leftTimes)
+                if (!CheckExpired(leftTime.Value))
+                {
+                    id = leftTime.Key;
+                    break;
+                }
+            if (!flowWindowsSetting.ContainsKey(id))
+            {
+                DdlFlowWindow dfw = new DdlFlowWindow(id, ddls.Find(temp => temp.Id == id).Name, GetLeftTime(id), 1);
+                double[] d = { 0, 0, 1 };
+                DdlOperation.flowWindowsSetting.Add(id, d);
+                dfw.Left = 0;
+                dfw.Top = 0;
+                DdlOperation.flowWindows.Add(dfw);
+                dfw.Show();
+            }
+        }
     }
 }
