@@ -55,7 +55,8 @@ namespace DDLMwin
         {
             DdlOperation.flowWindows.Remove(this);
             DdlOperation.flowWindowsSetting.Remove(id);
-            DdlOperation.ShowNearestFlowWindow();
+            if (SettingOperation.autoShow)
+                DdlOperation.ShowNearestFlowWindow();
             Close();
         }
 

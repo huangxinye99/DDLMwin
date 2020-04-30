@@ -75,7 +75,7 @@ namespace DDLMwin
             config.AppSettings.Settings["dark"].Value = isDark.ToString();
             config.AppSettings.Settings["primaryColor"].Value = primaryColor;
             config.AppSettings.Settings["secondaryColor"].Value = secondaryColor;
-            config.AppSettings.Settings["autoShow"].Value = autoShow.ToString(); ;
+            config.AppSettings.Settings["autoShow"].Value = autoShow.ToString();
             config.AppSettings.Settings["showMessageBox"].Value = showMessageBox.ToString();
             config.AppSettings.Settings["alarm"].Value = alarm.ToString();
             config.AppSettings.Settings["alarmPath"].Value = alarmPath;
