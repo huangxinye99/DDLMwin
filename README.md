@@ -10,6 +10,9 @@ Deadline Matters for Windows
 [其他](#其他)  
 
 ## 更新  
+v1.2.2(2020-5-1)    
+解决了最近一条Deadlne的显示Bug  
+
 v1.2.1(2020-5-1)  
 解决了逾期算法的Bug  
 
