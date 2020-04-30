@@ -32,6 +32,8 @@ namespace DDLMwin
             dt.Start();
         }
 
+        public static void CalcLeftTimesEvent(object sender, EventArgs e) => CalcLeftTimes();
+
         //calculate the left time of a deadline
         public static TimeSpan CalcLeftTime(DateTime time) => time.Subtract(DateTime.Now);
 
@@ -49,15 +51,13 @@ namespace DDLMwin
             {
                 TimeSpan ts = CalcLeftTime(ddl.Time);
                 leftTimes[ddl.Id] = ts;
-                if (CheckExpired(ts))
+                if (ts.TotalSeconds <= 0 && ts.TotalSeconds >= -1)
                     Alert(ddl);
             }
         }
 
-        public static void CalcLeftTimesEvent(object sender, EventArgs e) => CalcLeftTimes();
-
         //check if the deadline was expired
-        private static Boolean CheckExpired(TimeSpan ts) => (ts.TotalSeconds < 0 && ts.TotalSeconds > -1) ? true : false;
+        private static Boolean IsExpired(TimeSpan ts) => (ts.TotalSeconds <= 0) ? true : false;
 
         //alert the alarm
         private static void Alert(Ddl ddl)
@@ -77,7 +77,7 @@ namespace DDLMwin
             }
 
             if (SettingOperation.showMessageBox)
-                MessageBox.Show(ddl.Name + "时间到！");
+                MessageBox.Show(ddl.Name + " 时间到！");
         }
 
         //refresh the list and distionary after add/update/delete deadlines
@@ -132,12 +132,18 @@ namespace DDLMwin
         public static void ShowNearestFlowWindow()
         {
             int id = 0;
-            foreach (var leftTime in leftTimes)
-                if (!CheckExpired(leftTime.Value))
+            int[] keys = new int[leftTimes.Count]; ;
+            leftTimes.Keys.CopyTo(keys, 0);
+            for (int i = 0; i < leftTimes.Count; i++)
+            {
+                TimeSpan ts = leftTimes[keys[i]];
+                if (!IsExpired(ts))
                 {
-                    id = leftTime.Key;
+                    id = keys[i];
                     break;
                 }
+            }
+            
             if (!flowWindowsSetting.ContainsKey(id))
             {
                 DdlFlowWindow dfw = new DdlFlowWindow(id, ddls.Find(temp => temp.Id == id).Name, GetLeftTime(id), 1);

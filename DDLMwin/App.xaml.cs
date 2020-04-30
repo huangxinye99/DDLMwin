@@ -27,6 +27,8 @@ namespace DDLMwin
             DdlOperation.ShowAllFlowWindowEvent(sender, e);
             if (SettingOperation.autoShow)
                 DdlOperation.ShowNearestFlowWindow();
+
+            this.DispatcherUnhandledException += new System.Windows.Threading.DispatcherUnhandledExceptionEventHandler(AppDispatcherUnhandledException);
         }
 
         private void Application_Exit(object sender, ExitEventArgs e) => CloseDdlm();
@@ -126,6 +128,9 @@ namespace DDLMwin
             mw.mainFrame.Content = new SettingPage();
         }
 
-        
+        private void AppDispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            MessageBox.Show(e.Exception + "\n 请在GitHub上报告错误，并重启应用。" , "出错了！");
+        }
     }
 }
