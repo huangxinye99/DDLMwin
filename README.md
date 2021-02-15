@@ -60,7 +60,7 @@ Deadline浮窗
 ![Deadline浮窗](./preview/2.jpg "Deadline浮窗")
 
 ## 性能
-DDLm for Windows使用C#开发  
+DDLM for Windows使用C#开发  
 内存占用在我个人接受范围内所以**以后也不会优化**  
 
 ## 其他
