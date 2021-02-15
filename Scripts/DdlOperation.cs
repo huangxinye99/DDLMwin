@@ -38,6 +38,8 @@ namespace DDLM
 
         public DdlOperation()
         {
+            player = new MediaPlayer();
+
             ddls = DatabaseOperation.Select();
             foreach (Ddl ddl in ddls)
                 leftTimesDict.Add(ddl.Id, CalcLeftTime(ddl.EndTime));
@@ -77,12 +79,9 @@ namespace DDLM
             {
                 try
                 {
-                    player = new MediaPlayer
-                    {
-                        Volume = SettingOperation.alarmVolume
-                    };
                     player.Open(new Uri(SettingOperation.alarmPath));
                     player.Play();
+                    player.Volume = SettingOperation.alarmVolume / 100f;
                 }
                 catch (Exception) { App.ShowBalloonTip("音频加载失败！"); }
             }

@@ -269,7 +269,6 @@
                             <TranslateTransform Y="100"/>
                         </Grid.RenderTransform>
                         <Slider
-                            Visibility="Hidden"
                             x:Name="AlarmVolumeSlider"
                             Minimum="0"
                             Maximum="100"
@@ -282,7 +281,6 @@
                             MouseWheel="AlarmVolumeSlider_MouseWheel"
                             Thumb.DragCompleted="AlarmVolumeSlider_DragCompleted"/>
                         <Label
-                            Visibility="Hidden"
                             Margin="0, 10, 0, 0"
                             Foreground="{DynamicResource MaterialDesignBody}"
                             x:Name="alarmVolumeLabel"

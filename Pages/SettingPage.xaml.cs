@@ -120,6 +120,15 @@ namespace DDLM
         }
 
 
+        private void AlarmVolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+            => SettingOperation.alarmVolume = ((int)AlarmVolumeSlider.Value);
+
+        private void AlarmVolumeSlider_MouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
+            => AlarmVolumeSlider.Value += e.Delta > 0 ? 1 : -1;
+
+        private void AlarmVolumeSlider_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
+            => SettingOperation.SaveVolume();
+
         public void OpenAnimation()
         {
             Storyboard sb = new Storyboard();
@@ -146,14 +155,6 @@ namespace DDLM
             return num;
         }
 
-        private void AlarmVolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-            => SettingOperation.alarmVolume = ((int)AlarmVolumeSlider.Value);
-
-        private void AlarmVolumeSlider_MouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
-            => AlarmVolumeSlider.Value += e.Delta > 0 ? 1 : -1;
-
-        private void AlarmVolumeSlider_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
-            => SettingOperation.SaveVolume();
     }
 
     public class WidthConverter : IValueConverter
