@@ -50,32 +50,18 @@ v1.0(2020-3-27)
 在[release页面](https://github.com/huangxinye99/DDLMwin/releases)直接下载zip压缩包  
 解压后直接双击文件夹的exe文件即可  
 
-  在主页点击Deadline对其进行设置  
-  浮窗按钮创建此Deadline浮窗  
-  删除按钮删除此Deadline  
-  添加按钮新建Deadline
-  
-Deadline浮窗鼠标左键移动，右键设置Deadline，滚轮调整大小，双击关闭浮窗
-
-设置页面可以设置DDLM的开机自启（需管理员身份）、主题颜色和提醒方式
-支持闹铃提醒，使用了MediaPlayer所以基本的音频格式应该都支持  
-
-以上说的所有功能都没有快捷键，**以后也不一定有**
+具体使用方法软件里有
 
 ## 截图
 DDLM主程序  
-![DDLM主程序](./preview/1.png "DDLM主程序")
+![DDLM主程序](./preview/1.jpg "DDLM主程序")
 
 Deadline浮窗  
-![Deadline浮窗](./preview/2.png "Deadline浮窗")
+![Deadline浮窗](./preview/2.jpg "Deadline浮窗")
 
 ## 性能
 DDLm for Windows使用C#开发  
-这是我第一款开发的WPF软件，会比其他的小应用吃内存  
-但是60M在我个人接受范围内所以**以后也不会优化**  
+内存占用在我个人接受范围内所以**以后也不会优化**  
 
 ## 其他
-其实还有一个和同学开发的DDLM for Android，但是项目隐藏了，这里就不贴URL了。  
-本质自嗨软件+Unity C#学习的副产物，所以以后也不会有怎么更改  
-但如果有什么重大Bug还是会修的  
-不知道用什么作为闹铃的话可以考虑压缩包中的sound.mp3
+自嗨开发+Unity C#学习的副产物，以后也不会有什么大更改  
