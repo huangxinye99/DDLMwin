@@ -3,7 +3,6 @@ Deadline Matters for Windows
 
 ## 目录
 [更新](#更新)  
-[开发背景](#开发背景)  
 [使用](#使用)  
 [截图](#截图)  
 [性能](#性能)  
@@ -46,12 +45,6 @@ v1.0.1(2020-3-27)
 
 v1.0(2020-3-27)  
 基本能用
-
-## 开发背景
-Windows没找到合适的Deadline倒计时软件，就自己瞎搞一个  
-删除了安卓版（最后有提）的登录和分类功能  
-软件开发基于[sqlite-net](https://github.com/praeclarum/sqlite-net "SQLite数据库管理")和
-[MaterialDesignInXamlToolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit "WPF的Material Design库")
 
 ## 使用
 在[release页面](https://github.com/huangxinye99/DDLMwin/releases)直接下载zip压缩包  
