@@ -1,0 +1,198 @@
+﻿<Page x:Class="DDLM.InfoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DDLM"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="InfoPage">
+    
+    <Page.Resources>
+        <local:WidthConverter x:Key="WidthConverter"/>
+    </Page.Resources>
+    
+    <Grid
+        x:Name="Container">
+        <ScrollViewer
+            VerticalScrollBarVisibility="Hidden"
+            VerticalAlignment="Stretch">
+            <StackPanel
+                x:Name="sp"
+                Margin="20, 20"
+                Width="{Binding ElementName=Container, Path=ActualWidth, Converter={StaticResource WidthConverter}, ConverterParameter=40}">
+                <TextBlock
+                    x:Name="TitleTb"
+                    Style="{StaticResource Headline4TextBlock}"
+                    Foreground="{DynamicResource MaterialDesignToolForeground}"
+                    Text="{DynamicResource Help}"
+                    Opacity="0"
+                    RenderTransformOrigin="0.5, 0.5">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform Y="100"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                
+                <TextBlock
+                    x:Name="SubTitleTb"
+                    Style="{StaticResource Headline5TextBlock}"
+                    Foreground="{Binding ElementName=TitleTb, Path=Foreground}"
+                    Text="{DynamicResource AddDdl}"
+                    Margin="0, 10, 0, 0"
+                    Opacity="0"
+                    RenderTransformOrigin="{Binding ElementName=TitleTb, Path=RenderTransformOrigin}">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform Y="100"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock
+                    Style="{StaticResource Body1TextBlock}"
+                    Foreground="{Binding ElementName=TitleTb, Path=Foreground}"
+                    Text="{DynamicResource AddDdlContent}"
+                    Opacity="0"
+                    RenderTransformOrigin="{Binding ElementName=TitleTb, Path=RenderTransformOrigin}">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform Y="100"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+                <TextBlock
+                    Style="{StaticResource Headline5TextBlock}"
+                    Foreground="{Binding ElementName=TitleTb, Path=Foreground}"
+                    Text="{DynamicResource EditDdl}"
+                    Margin="{Binding ElementName=SubTitleTb, Path=Margin}"
+                    Opacity="0"
+                    RenderTransformOrigin="{Binding ElementName=TitleTb, Path=RenderTransformOrigin}">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform Y="100"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock
+                    Style="{StaticResource Body1TextBlock}"
+                    Foreground="{Binding ElementName=TitleTb, Path=Foreground}"
+                    Text="{DynamicResource EditDdlContent}"
+                    Opacity="0"
+                    RenderTransformOrigin="{Binding ElementName=TitleTb, Path=RenderTransformOrigin}">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform Y="100"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+                <TextBlock
+                    Style="{StaticResource Headline5TextBlock}"
+                    Foreground="{Binding ElementName=TitleTb, Path=Foreground}"
+                    Text="{DynamicResource OperateDdls}"
+                    Margin="{Binding ElementName=SubTitleTb, Path=Margin}"
+                    Opacity="0"
+                    RenderTransformOrigin="{Binding ElementName=TitleTb, Path=RenderTransformOrigin}">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform Y="100"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock
+                    Style="{StaticResource Body1TextBlock}"
+                    Foreground="{Binding ElementName=TitleTb, Path=Foreground}"
+                    Text="{DynamicResource OperateDdlsContent}"
+                    Opacity="0"
+                    RenderTransformOrigin="{Binding ElementName=TitleTb, Path=RenderTransformOrigin}">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform Y="100"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+                <TextBlock
+                    Style="{StaticResource Headline5TextBlock}"
+                    Foreground="{Binding ElementName=TitleTb, Path=Foreground}"
+                    Text="{StaticResource FlowDdl}"
+                    Margin="{Binding ElementName=SubTitleTb, Path=Margin}"
+                    Opacity="0"
+                    RenderTransformOrigin="{Binding ElementName=TitleTb, Path=RenderTransformOrigin}">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform Y="100"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock
+                    TextWrapping="Wrap"
+                    Style="{StaticResource Body1TextBlock}"
+                    Foreground="{Binding ElementName=TitleTb, Path=Foreground}"
+                    Text="{StaticResource FlowDdlContent}"
+                    Opacity="0"
+                    RenderTransformOrigin="{Binding ElementName=TitleTb, Path=RenderTransformOrigin}">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform Y="100"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+                <TextBlock
+                    Style="{StaticResource Headline5TextBlock}"
+                    Foreground="{Binding ElementName=TitleTb, Path=Foreground}"
+                    Text="{StaticResource SoftwareSetting}"
+                    Margin="{Binding ElementName=SubTitleTb, Path=Margin}"
+                    Opacity="0"
+                    RenderTransformOrigin="{Binding ElementName=TitleTb, Path=RenderTransformOrigin}">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform Y="100"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock
+                    TextWrapping="Wrap"
+                    Style="{StaticResource Body1TextBlock}"
+                    Foreground="{Binding ElementName=TitleTb, Path=Foreground}"
+                    Text="{StaticResource SoftwareSettingContent}"
+                    Opacity="0"
+                    RenderTransformOrigin="{Binding ElementName=TitleTb, Path=RenderTransformOrigin}">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform Y="100"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+                <!--about-->
+                <TextBlock
+                    Style="{StaticResource Headline4TextBlock}"
+                    Foreground="{DynamicResource MaterialDesignToolForeground}"
+                    Text="{DynamicResource About}"
+                    Margin="0, 30, 0, 0"
+                    Opacity="0"
+                    RenderTransformOrigin="0.5, 0.5">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform Y="100"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock
+                    Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                    Foreground="{Binding ElementName=TitleTb, Path=Foreground}"
+                    Text="{StaticResource SoftwareName}"
+                    Margin="{Binding ElementName=SubTitleTb, Path=Margin}"
+                    Opacity="0"
+                    RenderTransformOrigin="{Binding ElementName=TitleTb, Path=RenderTransformOrigin}">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform Y="100"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock
+                    Style="{StaticResource Body1TextBlock}"
+                    Foreground="{Binding ElementName=TitleTb, Path=Foreground}"
+                    Text="{StaticResource Developer}"
+                    Opacity="0"
+                    RenderTransformOrigin="{Binding ElementName=TitleTb, Path=RenderTransformOrigin}">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform Y="100"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock
+                    Style="{StaticResource Body1TextBlock}"
+                    Foreground="{Binding ElementName=TitleTb, Path=Foreground}"
+                    Text="{StaticResource SoftwareBase}"
+                    Opacity="0"
+                    RenderTransformOrigin="{Binding ElementName=TitleTb, Path=RenderTransformOrigin}">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform Y="100"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+            </StackPanel>
+        </ScrollViewer>
+        
+        
+    </Grid>
+
+</Page>

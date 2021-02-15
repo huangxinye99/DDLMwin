@@ -1,0 +1,111 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:local="clr-namespace:DDLM">
+
+    <!--MainWindow-->
+    <sys:String x:Key="DdlPageBtnText">DDLs</sys:String>
+    <sys:String x:Key="SettingPageBtnText">Settings</sys:String>
+    <sys:String x:Key="InfoPageBtnText">Info</sys:String>
+    
+    <!--DdlPage-->
+    <sys:String x:Key="AddBtnToolTip">add new deadline</sys:String>
+    <sys:String x:Key="ReloadBtnToolTip">Refresh</sys:String>
+    <sys:String x:Key="SettingDdl">Setting</sys:String>
+    <sys:String x:Key="FlowWindowDdl">Flow</sys:String>
+    <sys:String x:Key="DeleteDdl">Delete</sys:String>
+
+    <!--SettingPage-->
+    <sys:String x:Key="LangText">Language</sys:String>
+    <sys:String x:Key="AutoStartText">Run on system start</sys:String>
+    <sys:String x:Key="ThemeText">Theme</sys:String>
+    <sys:String x:Key="LightText">Light</sys:String>
+    <sys:String x:Key="DarkText">Dark</sys:String>
+    <sys:String x:Key="PrimaryColorText">Primary</sys:String>
+    <sys:String x:Key="SecondaryColorText">Secondary</sys:String>
+    <sys:String x:Key="SoundText">Sound</sys:String>
+    <sys:String x:Key="AlarmPathText">Alarm path</sys:String>
+    <sys:String x:Key="AlarmVolumeText">Volume</sys:String>
+    
+    <!--InfoPage-->
+    <sys:String x:Key="Help">Help</sys:String>
+    <sys:String x:Key="AddDdl">Add a deadline</sys:String>
+    <sys:String x:Key="AddDdlContent">On the left side of button panel, click DDLs Button.
+        Click the Add Button, and start edit your deadline.</sys:String>
+    <sys:String x:Key="EditDdl">Edit a deadline</sys:String>
+    <sys:String x:Key="EditDdlContent" xml:space="preserve">On the edit window, set the name, importance, time, loop, notification method, and reminder of the deadline.
+Click the button to the left of the end time to select the specific end time or the duration of deadline.
+Check the loop checkbox to enable the Loop function. After the deadline ends, it will start again and the duration will be the cycle interval.
+Check Notification checkboxes to select the notification modes at the end of Deadline. There are three kinds of notice available: tip, pop-up window and sound.
+Check the remind checkbox to enable the Remind function. Click the button at the bottom of the checkbox to select remind interval or remind days of a week.</sys:String>
+    <sys:String x:Key="OperateDdls">Operate deadlines</sys:String>
+    <sys:String x:Key="OperateDdlsContent">Displays all the slots on the DDLS page, showing their names, times, importance, remaining times, and progress bars.
+When the Deadline does not end, the colro of progress bar is the dominant color; When finished, it becomes the secondary color.
+Clicking Deadline displays three buttons, which are Edit button, flow Window button, and Delete button from left to right.</sys:String>
+    <sys:String x:Key="FlowDdl">Flow a deadline</sys:String>
+    <sys:String x:Key="FlowDdlContent">Click the flow window button, and a deadline flow window appears in the upper left corner of the main display, showing its name, the remaining time and the progress.
+Drag the flow window to move it; Right-click to enter its setting window; Scroll to adjust its size; Double left-click to close the flow window.</sys:String>
+    <sys:String x:Key="SoftwareSetting">Software Setting</sys:String>
+    <sys:String x:Key="SoftwareSettingContent">Click Settings button on the left side of the main window to go to the Settings page of the software.
+You can set boot start, theme color and notification sound.</sys:String>
+    
+    <sys:String x:Key="About">About</sys:String>
+    <sys:String x:Key="SoftwareName">Deadlines Matter</sys:String>
+    <sys:String x:Key="Developer">Handsone Huang</sys:String>
+    <sys:String x:Key="SoftwareBase">Based on SQLite-NET AND MaterialDesignInXAMLToolkit</sys:String>
+
+
+    <!--DdlSettingWindow-->
+    <sys:String x:Key="Year">Year</sys:String>
+    <sys:String x:Key="Month">Month</sys:String>
+    <sys:String x:Key="Day">Day</sys:String>
+    <sys:String x:Key="Hour">Hour</sys:String>
+    <sys:String x:Key="Minute">Minute</sys:String>
+    <sys:String x:Key="Second">Second</sys:String>
+    
+    <sys:String x:Key="DdlName">Deadline name</sys:String>
+    <sys:String x:Key="Priority">Priority</sys:String>
+
+    <sys:String x:Key="StartTime">Start time</sys:String>
+    <sys:String x:Key="EndTime">End Time</sys:String>
+    <sys:String x:Key="EndBtn">End</sys:String>
+    <sys:String x:Key="DurationBtn">Span</sys:String>
+
+    <sys:String x:Key="LoopCheckBox">Loop</sys:String>
+    <sys:String x:Key="LoopInterval">Loop interval</sys:String>
+
+    <sys:String x:Key="TipCheckBox">Tip</sys:String>
+    <sys:String x:Key="WindowCheckBox">Pop-up window</sys:String>
+    <sys:String x:Key="SoundCheckBox">Sound</sys:String>
+    
+    <sys:String x:Key="RemindCheckBox">Remind</sys:String>
+    <sys:String x:Key="RemindDate">Remind date</sys:String>
+    <sys:String x:Key="RemindTime">Remind time</sys:String>
+    <sys:String x:Key="IntervalBtn">Span</sys:String>
+    <sys:String x:Key="DayBtn">Day</sys:String>
+    <sys:String x:Key="SundayCheckBox">Sun.</sys:String>
+    <sys:String x:Key="MondayCheckBox">Mon.</sys:String>
+    <sys:String x:Key="TuesdayCheckBox">Tue.</sys:String>
+    <sys:String x:Key="WednesdayCheckBox">Wed.</sys:String>
+    <sys:String x:Key="ThursdayCheckBox">Thu.</sys:String>
+    <sys:String x:Key="FridayCheckBox">Fri.</sys:String>
+    <sys:String x:Key="SaturdayCheckBox">Sat.</sys:String>
+    
+    <sys:String x:Key="CancelBtn">Cancel</sys:String>
+    <sys:String x:Key="ComfirmBtn">Confirm</sys:String>
+
+    
+    <sys:String x:Key="AddSuccess">Add Success.</sys:String>
+    <sys:String x:Key="EditSuccess">Edit Success.</sys:String>
+    <sys:String x:Key="DeleteSuccess">Delete Success.</sys:String>
+
+    <sys:String x:Key="NullError" xml:space="preserve"> can't be null.</sys:String>
+    <sys:String x:Key="NanError" xml:space="preserve">is not a number.</sys:String>
+    <sys:String x:Key="MinusError" xml:space="preserve"> can't be minus.</sys:String>
+    <sys:String x:Key="TimespanError" xml:space="preserve"> avaliable time span: </sys:String>
+    <sys:String x:Key="ZerotimeError" xml:space="preserve"> time can't be zero. </sys:String>
+    <sys:String x:Key="StartDateError">Wrong start date.</sys:String>
+    <sys:String x:Key="EndDateError">Wrong end date.</sys:String>
+    <sys:String x:Key="StartEndTimeError">Start time must be earlier than end time.</sys:String>
+
+</ResourceDictionary>

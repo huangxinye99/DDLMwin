@@ -1,0 +1,298 @@
+﻿<Page x:Class="DDLM.SettingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:DDLM"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SettingPage">
+
+    <Page.Resources>
+        <local:WidthConverter x:Key="WidthConverter"/>
+    </Page.Resources>
+    
+    <Grid>
+        <ScrollViewer
+            VerticalScrollBarVisibility="Hidden"
+            VerticalAlignment="Stretch">
+            <StackPanel
+                x:Name="Container"
+                Margin="10"
+                Opacity="0">
+
+                <StackPanel
+                    Orientation="Horizontal"
+                    Opacity="0">
+                    <StackPanel.RenderTransform>
+                        <TranslateTransform Y="100"/>
+                    </StackPanel.RenderTransform>
+                    <TextBlock
+                        Grid.Column="0"
+                        Style="{StaticResource Subtitle2TextBlock}"
+                        Foreground="{DynamicResource MaterialDesignBody}"
+                        Text="{DynamicResource LangText}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="10, 10, 0, 0"/>
+                    <StackPanel
+                        Grid.Column="1"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="20, 10, 0, 0"
+                        Width="80"
+                        >
+                        <ComboBox
+                            x:Name="LanguageComboBox"
+                            Foreground="{DynamicResource MaterialDesignBody}"
+                            SelectionChanged="LanguageComboBox_SelectionChanged">
+                            <ComboBoxItem
+                                FontFamily="Consolas"
+                                Tag="zh-CN">
+                                简体中文
+                            </ComboBoxItem>
+                            <ComboBoxItem
+                                FontFamily="Consolas"
+                                Tag="en-US">
+                                English
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+
+                </StackPanel>
+
+                <CheckBox
+                    x:Name="AutoStartCheckBox"
+                    Style="{StaticResource CheckBox}"
+                    Foreground="{DynamicResource MaterialDesignBody}"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    IsChecked="False"
+                    Content="{DynamicResource AutoStartText}"
+                    Margin="10, 20, 10, 0"
+                    Checked="AutoStartCheckBox_Checked"
+                    Unchecked="AutoStartCheckBox_Unchecked"
+                    Opacity="0">
+                    <CheckBox.RenderTransform>
+                        <TranslateTransform Y="100"/>
+                    </CheckBox.RenderTransform>
+                </CheckBox>
+
+                <Rectangle Height="30"/>
+
+                <Grid
+                    Margin="0, 20, 0, 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Style="{StaticResource Subtitle2TextBlock}"
+                        Foreground="{DynamicResource MaterialDesignBody}"
+                        HorizontalAlignment="Center"
+                        Grid.Row="0"
+                        Text="{DynamicResource ThemeText}"
+                        Opacity="0">
+                        <TextBlock.RenderTransform>
+                            <TranslateTransform Y="100"/>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+
+                    <Grid
+                        Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid 
+                            Grid.Column="0"
+                            Margin="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <CheckBox
+                                x:Name="DarkCheckBox"
+                                Style="{StaticResource CheckBox}"
+                                Foreground="{DynamicResource MaterialDesignBody}"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                Margin="5, 0, 0, 20"
+                                Grid.Row="0"
+                                Click="DarkCheckBox_Clicked"
+                                Opacity="0">
+                                <CheckBox.Content>
+                                    <TextBlock>
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ElementName=DarkCheckBox, Path=IsChecked}" Value="false">
+                                                        <Setter Property="Text" Value="{DynamicResource LightText}"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding ElementName=DarkCheckBox, Path=IsChecked}" Value="true">
+                                                        <Setter Property="Text" Value="{DynamicResource DarkText}"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </CheckBox.Content>
+                                <CheckBox.RenderTransform>
+                                    <TranslateTransform Y="100"/>
+                                </CheckBox.RenderTransform>
+                            </CheckBox>
+
+                            <Grid
+                                Grid.Row="1"
+                                Margin="0, 0, 0, 20"
+                                Opacity="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RenderTransform>
+                                    <TranslateTransform Y="100"/>
+                                </Grid.RenderTransform>
+                                <TextBlock
+                                    x:Name="PrimaryColorTextBlock"
+                                    TextWrapping="Wrap"
+                                    Style="{StaticResource Subtitle2TextBlock}"
+                                    Foreground="{DynamicResource MaterialDesignBody}"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Margin="7, 0, 0, 20"
+                                    Grid.Column="0"
+                                    Text="{DynamicResource PrimaryColorText}"/>
+                                <WrapPanel
+                                    x:Name="PrimaryColorBtnPanel"
+                                    HorizontalAlignment="Left"
+                                    Grid.Column="1"
+                                    Width="{Binding ElementName=Container, Path=ActualWidth, Converter={StaticResource WidthConverter}, ConverterParameter=120}">
+                                </WrapPanel>
+                            </Grid>
+
+                            <Grid
+                                Grid.Row="2"
+                                Opacity="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="{Binding ElementName=Container, Path=Width}"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RenderTransform>
+                                    <TranslateTransform Y="100"/>
+                                </Grid.RenderTransform>
+                                <TextBlock
+                                    TextWrapping="Wrap"
+                                    Style="{StaticResource Subtitle2TextBlock}"
+                                    Foreground="{DynamicResource MaterialDesignBody}"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Margin="7, 0, 0, 0"
+                                    Grid.Column="0"
+                                    Text="{DynamicResource SecondaryColorText}"/>
+                                <WrapPanel
+                                    x:Name="SecondaryColorBtnPanel"
+                                    Grid.Column="1"
+                                    Width="{Binding ElementName=PrimaryColorBtnPanel, Path=Width}">
+                                </WrapPanel>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+                <Rectangle Height="30"/>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Style="{StaticResource Subtitle2TextBlock}"
+                        Foreground="{DynamicResource MaterialDesignBody}"
+                        Margin="0, 0, 0, 20"
+                        HorizontalAlignment="Center"
+                        Grid.Row="0"
+                        Text="{DynamicResource SoundText}"
+                        Opacity="0">
+                        <TextBlock.RenderTransform>
+                            <TranslateTransform Y="100"/>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+
+                    <Grid 
+                        Grid.Row="1"
+                        Margin="7, 0, 7, 20"
+                        VerticalAlignment="Center"
+                        Opacity="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="60"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RenderTransform>
+                            <TranslateTransform Y="100"/>
+                        </Grid.RenderTransform>
+
+                        <TextBox
+                            x:Name="AlarmPathTextBox"
+                            materialDesign:HintAssist.Hint="{DynamicResource AlarmPathText}"
+                            Style="{StaticResource FloatingHintTextBox}"
+                            Foreground="{DynamicResource MaterialDesignBody}"
+                            VerticalAlignment="Center"
+                            Grid.Column="0"/>
+                        <Button
+                            x:Name="AlarmPathLocateBtn"
+                            Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                            Grid.Column="1" Click="AlarmPathLocateBtn_Click">
+                            <materialDesign:PackIcon
+                                Kind="Location"
+                                Height="24"
+                                Width="24" />
+                        </Button>
+                    </Grid>
+
+                    <Grid
+                        Grid.Row="2"
+                        Opacity="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.RenderTransform>
+                            <TranslateTransform Y="100"/>
+                        </Grid.RenderTransform>
+                        <Slider
+                            Visibility="Hidden"
+                            x:Name="AlarmVolumeSlider"
+                            Minimum="0"
+                            Maximum="100"
+                            Value="49"
+                            IsSnapToTickEnabled="True"
+                            Grid.Row="0"
+                            Margin="7, 0"
+                            VerticalAlignment="Center"
+                            ValueChanged="AlarmVolumeSlider_ValueChanged"
+                            MouseWheel="AlarmVolumeSlider_MouseWheel"
+                            Thumb.DragCompleted="AlarmVolumeSlider_DragCompleted"/>
+                        <Label
+                            Visibility="Hidden"
+                            Margin="0, 10, 0, 0"
+                            Foreground="{DynamicResource MaterialDesignBody}"
+                            x:Name="alarmVolumeLabel"
+                            HorizontalAlignment="Center"
+                            Grid.Row="1"
+                            materialDesign:HintAssist.Hint="{DynamicResource AlarmVolumeText}"
+                            Content="{Binding Path=Value, ElementName=AlarmVolumeSlider}"/>
+                    </Grid>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

@@ -1,0 +1,117 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:local="clr-namespace:DDLM">
+
+    <sys:String x:Key="languageName">简体中文</sys:String>
+
+    <!--MainWindow-->
+    <sys:String x:Key="DdlPageBtnText">DDLs</sys:String>
+    <sys:String x:Key="SettingPageBtnText">设置</sys:String>
+    <sys:String x:Key="InfoPageBtnText">关于</sys:String>
+    
+    
+    <!--DdlPage-->
+    <sys:String x:Key="AddBtnToolTip">添加新Deadline</sys:String>
+    <sys:String x:Key="ReloadBtnToolTip">刷新</sys:String>
+    <sys:String x:Key="SettingDdl">设置</sys:String>
+    <sys:String x:Key="FlowWindowDdl">浮窗</sys:String>
+    <sys:String x:Key="DeleteDdl">删除</sys:String>
+    
+    
+    <!--SettingPage-->
+    <sys:String x:Key="LangText">语言</sys:String>
+    <sys:String x:Key="AutoStartText">开机启动</sys:String>
+    <sys:String x:Key="ThemeText">主题</sys:String>
+    <sys:String x:Key="LightText">亮色</sys:String>
+    <sys:String x:Key="DarkText">暗色</sys:String>
+    <sys:String x:Key="PrimaryColorText">主色</sys:String>
+    <sys:String x:Key="SecondaryColorText">副色</sys:String>
+    <sys:String x:Key="SoundText">声音</sys:String>
+    <sys:String x:Key="AlarmPathText">闹铃路径</sys:String>
+    <sys:String x:Key="AlarmVolumeText">音量</sys:String>
+    
+    
+    <!--InfoPage-->
+    <sys:String x:Key="Help">使用说明</sys:String>
+    <sys:String x:Key="AddDdl">添加Deadline</sys:String>
+    <sys:String x:Key="AddDdlContent">在窗口左侧选择DDLs页面，点击右下角的添加按钮，进行Deadline的编辑。</sys:String>
+    <sys:String x:Key="EditDdl">编辑Deadline</sys:String>
+    <sys:String x:Key="EditDdlContent" xml:space="preserve">在编辑页面，设置Deadline的名称、星级、开始时间、结束时间、循环间隔、通知方式和提醒时间。
+勾选农历选择框来设置开始时间和结束时间为农历。此时双击月份输入框，可以切换到闰月。
+点击结束时间左侧的按钮来选择输入具体的结束时间或是Deadline的持续时间。
+勾选循环选择框来开启循环功能，Deadline结束后重新开始，持续时间为循环间隔。
+勾选通知方式来选择Deadline结束时的通知方式。现有提醒、弹窗和声音三种通知方式。
+勾选提醒选择框来开启提醒功能。点击选择框下方的按钮来选择隔一段时间或星期进行提醒。</sys:String>
+    <sys:String x:Key="OperateDdls">操作Deadline</sys:String>
+    <sys:String x:Key="OperateDdlsContent" xml:space="preserve">在DDLs页面显示所有的Deadlines，显示其名字、起止时间、星级、剩余时间和进度条。
+Deadline未结束时，进度条为主色；结束后，进度条为副色。
+单击Deadline显示三个按钮，从左到右依次为编辑、浮窗和删除。</sys:String>
+    <sys:String x:Key="FlowDdl">浮窗Deadline</sys:String>
+    <sys:String x:Key="FlowDdlContent" xml:space="preserve">点击浮窗按钮后，一个Deadline浮窗会出现在主显示器左上角，显示Deadline的名字、剩余时间和进度。
+拖动浮窗设置其位置，右击进入其设置页面，滚轮调整其大小，左键双击关闭浮窗。</sys:String>
+    <sys:String x:Key="SoftwareSetting">软件设置</sys:String>
+    <sys:String x:Key="SoftwareSettingContent" xml:space="preserve">在窗口左侧选择设置进入设置页面。
+可以设置开机启动、主题颜色和通知音效。</sys:String>
+    
+    <sys:String x:Key="About">关于软件</sys:String>
+    <sys:String x:Key="SoftwareName">Deadlines Matter</sys:String>
+    <sys:String x:Key="Developer">开发：黄鑫烨</sys:String>
+    <sys:String x:Key="SoftwareBase">基于SQLite-NET和MaterialDesignInXAMLToolkit</sys:String>
+
+    
+    <!--DdlSettingWindow-->
+    <sys:String x:Key="Time">时间</sys:String>
+    <sys:String x:Key="Year">年</sys:String>
+    <sys:String x:Key="Month">月</sys:String>
+    <sys:String x:Key="Day">日</sys:String>
+    <sys:String x:Key="Hour">时</sys:String>
+    <sys:String x:Key="Minute">分</sys:String>
+    <sys:String x:Key="Second">秒</sys:String>
+
+    <sys:String x:Key="DdlName">Deadline名称</sys:String>
+    <sys:String x:Key="Priority">星级</sys:String>
+
+    <sys:String x:Key="StartTime">开始时间</sys:String>
+    <sys:String x:Key="EndTime">结束时间</sys:String>
+    <sys:String x:Key="EndBtn">时间</sys:String>
+    <sys:String x:Key="DurationBtn">间隔</sys:String>
+
+    <sys:String x:Key="LoopCheckBox">循环</sys:String>
+    <sys:String x:Key="LoopInterval">循环间隔</sys:String>
+
+    <sys:String x:Key="TipCheckBox">通知</sys:String>
+    <sys:String x:Key="WindowCheckBox">弹窗</sys:String>
+    <sys:String x:Key="SoundCheckBox">音效</sys:String>
+
+    <sys:String x:Key="RemindCheckBox">提醒</sys:String>
+    <sys:String x:Key="RemindDate">提醒日期</sys:String>
+    <sys:String x:Key="RemindTime">提醒时间</sys:String>
+    <sys:String x:Key="IntervalBtn">间隔</sys:String>
+    <sys:String x:Key="DayBtn">星期</sys:String>
+    <sys:String x:Key="MondayCheckBox">一</sys:String>
+    <sys:String x:Key="TuesdayCheckBox">二</sys:String>
+    <sys:String x:Key="WednesdayCheckBox">三</sys:String>
+    <sys:String x:Key="ThursdayCheckBox">四</sys:String>
+    <sys:String x:Key="FridayCheckBox">五</sys:String>
+    <sys:String x:Key="SaturdayCheckBox">六</sys:String>
+    <sys:String x:Key="SundayCheckBox">日</sys:String>
+
+    <sys:String x:Key="CancelBtn">取消</sys:String>
+    <sys:String x:Key="ComfirmBtn">确认</sys:String>
+
+
+    <sys:String x:Key="AddSuccess">添加成功</sys:String>
+    <sys:String x:Key="EditSuccess">编辑成功</sys:String>
+    <sys:String x:Key="DeleteSuccess">删除成功</sys:String>
+
+    <sys:String x:Key="NullError">不能为空</sys:String>
+    <sys:String x:Key="NanError">只能输入数字</sys:String>
+    <sys:String x:Key="MinusError">不能为负数</sys:String>
+    <sys:String x:Key="TimespanError">允许的时间范围：</sys:String>
+    <sys:String x:Key="ZerotimeError">时间不能为零</sys:String>
+    <sys:String x:Key="StartDateError">开始日期错误</sys:String>
+    <sys:String x:Key="EndDateError">结束日期错误</sys:String>
+    <sys:String x:Key="StartEndTimeError">开始时间不能晚于结束时间</sys:String>
+
+</ResourceDictionary>
